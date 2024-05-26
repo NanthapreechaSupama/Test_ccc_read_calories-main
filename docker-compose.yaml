@@ -1,0 +1,19 @@
+version: "3.8"
+services:
+  ccc-read-image-environment:
+    container_name: ccc-read-image
+    build: .
+    working_dir: /code/
+    command: uvicorn app.main:app --host 0.0.0.0 --reload
+    volumes:
+      - ./app:/code/app
+    ports:
+      - 8000:8000
+    restart: on-failure
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]

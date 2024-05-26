@@ -1,0 +1,6 @@
+requests
+fastapi
+easyocr
+numpy
+pillow
+uvicorn
